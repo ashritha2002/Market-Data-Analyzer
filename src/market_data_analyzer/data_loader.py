@@ -38,6 +38,7 @@ def download_prices(tickers: list[str], start: str, end: str | None = None) -> d
         raise RuntimeError(f"No data returned for {tickers}")
 
     frames: dict[str, pd.DataFrame] = {}
+    # Loop over tickers to extract their data and clean it up
     for ticker in tickers:
         if ticker not in raw.columns.get_level_values(0):
             log.warning("No data for %s, skipping", ticker)
